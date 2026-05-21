@@ -908,6 +908,132 @@
       text-transform: uppercase;
     }
 
+
+    /*
+      =========================================================
+      TEAM
+      =========================================================
+    */
+
+    .team {
+      position: relative;
+      background:
+        radial-gradient(circle at 12% 16%, rgba(16,151,223,0.10), transparent 360px),
+        radial-gradient(circle at 88% 72%, rgba(240,162,74,0.12), transparent 340px),
+        linear-gradient(180deg, #ffffff, #f7fbff 52%, #ffffff);
+    }
+
+    .team-panel {
+      position: relative;
+      display: grid;
+      grid-template-columns: 0.92fr 1.08fr;
+      gap: 56px;
+      align-items: stretch;
+      padding: 58px;
+      overflow: hidden;
+      border-radius: var(--radius-xxl);
+      border: 1px solid rgba(255,255,255,0.86);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.90), rgba(237,248,255,0.82)),
+        radial-gradient(circle at 88% 20%, rgba(240,162,74,0.12), transparent 300px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .team-panel::before {
+      content: "";
+      position: absolute;
+      width: 380px;
+      height: 380px;
+      right: -170px;
+      top: -170px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(16,151,223,0.14), rgba(240,162,74,0.16));
+    }
+
+    .team-copy,
+    .team-grid {
+      position: relative;
+      z-index: 1;
+    }
+
+    .team-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .team-copy .section-copy {
+      max-width: 680px;
+    }
+
+    .team-badge {
+      width: fit-content;
+      margin-top: 28px;
+      padding: 14px 18px;
+      border-radius: 999px;
+      color: var(--blue-950);
+      background: rgba(255,255,255,0.78);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-xs);
+      font-weight: 800;
+      line-height: 1.4;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .team-card {
+      min-height: 210px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 24px;
+      border-radius: 30px;
+      border: 1px solid rgba(6,111,186,0.13);
+      background: rgba(255,255,255,0.74);
+      box-shadow: var(--shadow-xs);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      transition: transform var(--transition), box-shadow var(--transition), background var(--transition), border-color var(--transition);
+    }
+
+    .team-card:hover {
+      transform: translateY(-8px);
+      background: rgba(255,255,255,0.96);
+      border-color: rgba(6,111,186,0.24);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .team-icon {
+      width: 56px;
+      height: 56px;
+      display: grid;
+      place-items: center;
+      border-radius: 20px;
+      color: var(--white);
+      background: linear-gradient(135deg, var(--blue-950), var(--blue-700));
+      box-shadow: var(--shadow-blue);
+    }
+
+    .team-card h3 {
+      margin-top: 22px;
+      color: var(--blue-950);
+      font-family: "Syne", sans-serif;
+      font-size: 1.45rem;
+      line-height: 1.08;
+      letter-spacing: -0.045em;
+    }
+
+    .team-card p {
+      margin-top: 10px;
+      color: var(--muted);
+      line-height: 1.72;
+      font-size: 0.98rem;
+    }
+
     /*
       =========================================================
       QUALITY / RESPONSIBLE
@@ -1427,13 +1553,19 @@
 
       .intro-panel,
       .section-head,
+      .team-panel,
       .quality-panel {
         grid-template-columns: 1fr;
       }
 
       .intro-panel,
+      .team-panel,
       .quality-panel {
         padding: 34px;
+      }
+
+      .team-grid {
+        grid-template-columns: 1fr;
       }
 
       .services-grid {
@@ -1543,6 +1675,7 @@
         <a href="#inicio">Inicio</a>
         <a href="#especialidad">Especialidad</a>
         <a href="#servicios">Servicios</a>
+        <a href="#equipo">Equipo</a>
         <a href="#calidad">Calidad</a>
         <a href="#contacto">Contacto</a>
       </nav>
@@ -1745,6 +1878,91 @@
         </div>
       </div>
     </section>
+
+
+    <section class="team" id="equipo">
+      <div class="container">
+        <div class="team-panel reveal">
+          <div class="team-copy">
+            <span class="section-label">Equipo</span>
+
+            <h2 class="section-title">
+              Un equipo preparado, claro y comprometido con cada servicio.
+            </h2>
+
+            <p class="section-copy">
+              En Naturalia Lavando contamos con un equipo profesional, organizado y orientado al detalle.
+              Trabajamos con una comunicación directa, procesos definidos y una actitud resolutiva para que
+              cada cliente tenga un servicio estable, cercano y bien coordinado.
+            </p>
+
+            <div class="team-badge">
+              Competencia técnica, trato cercano y seguimiento operativo en cada ciclo de trabajo.
+            </div>
+          </div>
+
+          <div class="team-grid">
+            <article class="team-card">
+              <div>
+                <div class="team-icon">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" stroke="currentColor" stroke-width="2"/>
+                    <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                </div>
+
+                <h3>Coordinación clara</h3>
+                <p>Organizamos el trabajo para que cada recogida, entrega y tratamiento tenga continuidad y control.</p>
+              </div>
+            </article>
+
+            <article class="team-card">
+              <div>
+                <div class="team-icon">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                    <path d="m9 12 2 2 4-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+
+                <h3>Responsabilidad</h3>
+                <p>Cuidamos las prendas y los tiempos de trabajo con seriedad, método y atención al detalle.</p>
+              </div>
+            </article>
+
+            <article class="team-card">
+              <div>
+                <div class="team-icon">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M3 12h18M12 3v18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M7 7h10v10H7V7Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+
+                <h3>Proceso técnico</h3>
+                <p>Aplicamos criterios profesionales para adaptar el servicio al tipo de textil y uso de cada cliente.</p>
+              </div>
+            </article>
+
+            <article class="team-card">
+              <div>
+                <div class="team-icon">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v8Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                    <path d="M8 9h8M8 13h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                </div>
+
+                <h3>Comunicación directa</h3>
+                <p>Mantenemos un trato cercano para resolver dudas, ajustar necesidades y acompañar el servicio.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
 
     <section id="calidad">
       <div class="container">
