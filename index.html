@@ -925,29 +925,40 @@
 
     .team-panel {
       position: relative;
-      display: grid;
-      grid-template-columns: 0.92fr 1.08fr;
-      gap: 56px;
-      align-items: stretch;
-      padding: 58px;
       overflow: hidden;
+      padding: clamp(38px, 5vw, 64px);
       border-radius: var(--radius-xxl);
       border: 1px solid rgba(255,255,255,0.86);
       background:
-        linear-gradient(135deg, rgba(255,255,255,0.90), rgba(237,248,255,0.82)),
-        radial-gradient(circle at 88% 20%, rgba(240,162,74,0.12), transparent 300px);
+        radial-gradient(circle at 16% 18%, rgba(255,255,255,0.98), transparent 340px),
+        radial-gradient(circle at 88% 18%, rgba(16,151,223,0.12), transparent 340px),
+        radial-gradient(circle at 90% 82%, rgba(240,162,74,0.13), transparent 320px),
+        linear-gradient(135deg, rgba(255,255,255,0.92), rgba(237,248,255,0.82));
       box-shadow: var(--shadow-md);
     }
 
     .team-panel::before {
       content: "";
       position: absolute;
-      width: 380px;
-      height: 380px;
-      right: -170px;
-      top: -170px;
+      width: 420px;
+      height: 420px;
+      right: -190px;
+      top: -190px;
       border-radius: 50%;
       background: linear-gradient(135deg, rgba(16,151,223,0.14), rgba(240,162,74,0.16));
+      pointer-events: none;
+    }
+
+    .team-panel::after {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      left: -120px;
+      bottom: -130px;
+      border-radius: 50%;
+      background: rgba(127,210,255,0.14);
+      pointer-events: none;
     }
 
     .team-copy,
@@ -957,47 +968,74 @@
     }
 
     .team-copy {
-      display: flex;
-      flex-direction: column;
+      max-width: 980px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .team-copy .section-label {
       justify-content: center;
     }
 
+    .team-copy .section-title {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
     .team-copy .section-copy {
-      max-width: 680px;
+      max-width: 820px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .team-badge {
       width: fit-content;
-      margin-top: 28px;
-      padding: 14px 18px;
+      max-width: 820px;
+      margin: 28px auto 0;
+      padding: 15px 20px;
       border-radius: 999px;
       color: var(--blue-950);
-      background: rgba(255,255,255,0.78);
+      background: rgba(255,255,255,0.82);
       border: 1px solid var(--line);
       box-shadow: var(--shadow-xs);
       font-weight: 800;
-      line-height: 1.4;
+      line-height: 1.45;
     }
 
     .team-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 42px;
     }
 
     .team-card {
-      min-height: 210px;
+      position: relative;
+      min-height: 255px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      padding: 24px;
-      border-radius: 30px;
+      padding: 26px;
+      border-radius: 32px;
       border: 1px solid rgba(6,111,186,0.13);
-      background: rgba(255,255,255,0.74);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.90), rgba(255,255,255,0.72)),
+        radial-gradient(circle at 90% 12%, rgba(127,210,255,0.16), transparent 180px);
       box-shadow: var(--shadow-xs);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
       transition: transform var(--transition), box-shadow var(--transition), background var(--transition), border-color var(--transition);
+    }
+
+    .team-card::before {
+      content: "";
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      right: -54px;
+      top: -54px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(16,151,223,0.12), rgba(240,162,74,0.12));
+      transition: transform var(--transition);
     }
 
     .team-card:hover {
@@ -1007,31 +1045,48 @@
       box-shadow: var(--shadow-sm);
     }
 
+    .team-card:hover::before {
+      transform: scale(1.25);
+    }
+
     .team-icon {
-      width: 56px;
-      height: 56px;
+      position: relative;
+      z-index: 1;
+      width: 58px;
+      height: 58px;
       display: grid;
       place-items: center;
-      border-radius: 20px;
+      border-radius: 21px;
       color: var(--white);
       background: linear-gradient(135deg, var(--blue-950), var(--blue-700));
       box-shadow: var(--shadow-blue);
+      flex: 0 0 auto;
     }
 
     .team-card h3 {
-      margin-top: 22px;
+      position: relative;
+      z-index: 1;
+      margin-top: 24px;
       color: var(--blue-950);
       font-family: "Syne", sans-serif;
-      font-size: 1.45rem;
+      font-size: clamp(1.28rem, 1.5vw, 1.55rem);
       line-height: 1.08;
       letter-spacing: -0.045em;
     }
 
     .team-card p {
-      margin-top: 10px;
+      position: relative;
+      z-index: 1;
+      margin-top: 12px;
       color: var(--muted);
       line-height: 1.72;
       font-size: 0.98rem;
+    }
+
+    @media (max-width: 1220px) {
+      .team-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
     }
 
     /*
@@ -1553,14 +1608,16 @@
 
       .intro-panel,
       .section-head,
-      .team-panel,
       .quality-panel {
         grid-template-columns: 1fr;
       }
 
       .intro-panel,
-      .team-panel,
       .quality-panel {
+        padding: 34px;
+      }
+
+      .team-panel {
         padding: 34px;
       }
 
@@ -2095,23 +2152,9 @@
                 </div>
               </div>
 
-              <div class="form-grid">
-                <div class="field">
-                  <label for="email">Email *</label>
-                  <input id="email" type="email" name="email" placeholder="tuemail@ejemplo.com" required />
-                </div>
-
-                <div class="field">
-                  <label for="servicio">Servicio que necesitas</label>
-                  <select id="servicio" name="servicio">
-                    <option value="">Selecciona una opción</option>
-                    <option value="Lavandería industrial">Lavandería industrial</option>
-                    <option value="Tinte y limpieza en seco">Tinte y limpieza en seco</option>
-                    <option value="Suministros mayoristas">Suministros mayoristas</option>
-                    <option value="Ropa laboral">Ropa laboral</option>
-                    <option value="Otro servicio">Otro servicio</option>
-                  </select>
-                </div>
+              <div class="field">
+                <label for="email">Email *</label>
+                <input id="email" type="email" name="email" placeholder="tuemail@ejemplo.com" required />
               </div>
 
               <div class="field">
